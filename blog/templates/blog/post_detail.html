@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<div class="page-header">
+		<h3>
+			{{ post.title }} 
+			{% if user.is_authenticated %}
+			<button type="button" class="btn btn-default" aria-label="Modify" onclick="location.href='{% url 'post_edit' pk=post.pk %}'"><span class="glyphicon glyphicon-pencil"></button> 
+			{% endif %}
+			<small>{{ post.published_date }} </small>
+		</h3>
+	</div>
+	<div>
+		{{ post.text|linebreaksbr }}
+	</div>
+	<hr>
+{% endblock content %}
