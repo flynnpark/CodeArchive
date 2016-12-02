@@ -30,7 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Code Archive</a>
+					<a class="navbar-brand" href="{% url 'post_list' %}">Code Archive</a>
 				</div>
 
 				<div class="collapse navbar-collapse">
@@ -58,9 +58,13 @@
 					</ul>
 					<div class="navbar-right">
 						{% if user.is_authenticated %}
+							<p class="navbar-text">{{ user.username }}님, 반갑습니다.</p>
+							<button type="button" class="btn btn-default navbar-btn" onclick="location.href='{% url 'post_draft_list' %}'">출판</button>
 							<button type="button" class="btn btn-default navbar-btn" onclick="location.href='{% url 'post_new' %}'">글쓰기</button>
+							<button type="button" class="btn btn-default navbar-btn" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+						{% else %}
+							<button type="button" class="btn btn-default navbar-btn" onclick="location.href='{% url 'login' %}'">로그인</button>
 						{% endif %}
-							<button type="button" class="btn btn-default navbar-btn" onclick="location.href='./login.html'">로그인</button>
 					</div>
 				</div>
 			</div>
@@ -73,27 +77,6 @@
 						<div class="contents">
 							{% block content %}
 							{% endblock %}
-						</div>
-						<div class="pages">
-							<nav>
-								<ul class="pagination">
-									<li>
-										<a href="#" aria-label="Previous">
-											<span aria-hidden="true">&laquo;</span>
-										</a>
-									</li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li>
-										<a href="#" aria-label="Next">
-											<span aria-hidden="true">&raquo;</span>
-										</a>
-									</li>
-								</ul>
-							</nav>
 						</div>
 					</section>	
 				</div>
