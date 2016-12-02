@@ -38,22 +38,22 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">수업 자료 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">자료구조</a></li>
-								<li><a href="#">데이터베이스</a></li>
-								<li><a href="#">웹 개발</a></li>
+								<li><a href="{% url 'post_category' ct='자료구조' %}">자료구조</a></li>
+								<li><a href="{% url 'post_category' ct='데이터베이스' %}">데이터베이스</a></li>
+								<li><a href="{% url 'post_category' ct='웹개발' %}">웹 개발</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">개인 공부 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">C++</a></li>
-								<li><a href="#">php</a></li>
-								<li><a href="#">Python</a></li>
-								<li><a href="#">JavaScript</a></li>
+								<li><a href="{% url 'post_category' ct='cpp' %}">C++</a></li>
+								<li><a href="{% url 'post_category' ct='php' %}">php</a></li>
+								<li><a href="{% url 'post_category' ct='python' %}">Python</a></li>
+								<li><a href="{% url 'post_category' ct='js' %}">JavaScript</a></li>
 							</ul>
 						</li>
 						<li>
-							<a href="#">자료 보관함</a>
+							<a href="{% url 'post_category' ct='etc' %}">자료 보관함</a>
 						</li>
 					</ul>
 					<div class="navbar-right">
@@ -88,7 +88,7 @@
 								<div class="form-group">
 									<input type="text" class="form-control" placeholder="Search">
 								</div>
-								<button type="submit" class="btn btn-default">Find</button>
+								<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 							</form>
 						</div>
 						<hr>

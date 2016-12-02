@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	<h3>New Post</h3>
+	<h3>글 쓰기</h3>
 	<form method="POST" class="form-group">{% csrf_token %}
 	{{ form.as_p }}
 	<button type="submit" class="btn btn_primary">저장</button>

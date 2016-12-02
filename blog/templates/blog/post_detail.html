@@ -5,7 +5,7 @@
 		<h3>
 			{{ post.title }} 
 			{% if post.published_date %}
-			<small>{{ post.published_date }} </small>
+			<small>{{ post.category }} | {{ post.published_date }} </small>
 			{% else %}
 			<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">출판</a>
 			{% endif %}
