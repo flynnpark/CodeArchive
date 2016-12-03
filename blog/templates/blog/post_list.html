@@ -1,34 +1,44 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	{% for post in posts %}
-	<div class="page-header">
-		<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> <small>{{ post.category }} | {{ post.published_date }}</small></h3>
-	</div>
-	<div>
-		{{ post.text|truncatechars:200 }}
-	</div>
-	<hr>
-	{% endfor %}
-	<div class="pages">
-		<nav>
-			<ul class="pagination">
-				<li>
-					<a href="#" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
-					<a href="#" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
+	{% load el_pagination_tags %}
+		{% paginate posts %} 
+		{% for post in posts %}
+		<div class="page-header">
+			<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> <small>{{ post.category }} | {{ post.published_date }}</small></h3>
+		</div>
+		<div>
+			{{ post.text|truncatechars:200 }}
+		</div>
+		<hr>
+		{% endfor %}
+
+		<div class="pages">
+			<nav>
+				<ul class="pagination">
+				{% get_pages %}
+				{% if pages.paginated %}
+					<li>
+					{{ pages.first_as_arrow }}
+					</li>
+					<li>
+					{{ pages.previous }}
+					</li>
+					{% for page in pages %}
+					<li>
+					{{ page }}
+					</li>
+					{% endfor %}
+					<li>
+					{{ pages.next }}
+					</li>
+					<li>
+					{{ pages.last_as_arrow }}
+					</li>
+				{% endif %}
+
+				</ul>
+			</nav>
+		</div>
+
 {% endblock content %}

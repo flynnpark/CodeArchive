@@ -30,7 +30,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{% url 'post_list' %}">Code Archive</a>
+					<a class="navbar-brand" href="{% url 'post_list' %}">
+						<img src="{% static 'img/logo.png' %}" height="26" class="main_logo">
+					</a>
 				</div>
 
 				<div class="collapse navbar-collapse">
@@ -118,6 +120,7 @@
 							    <span class="fa fa-github"></span>
 							</a>
 						</div>
+						<hr>
 						<div class="goto-top text-info">
 							<a href="#" class="back-to-top">
 								<span class="glyphicon glyphicon-arrow-up"></span>

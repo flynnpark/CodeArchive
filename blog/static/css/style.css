@@ -1,5 +1,5 @@
 body { padding-top: 70px; padding-bottom: 30px;}
-footer { position: absolute; width: 100%; bottom: 0; }
+footer { position: relative; width: 100%; bottom: 0; }
 
 .blog-footer {
   padding: 40px 0;
@@ -15,6 +15,7 @@ footer { position: absolute; width: 100%; bottom: 0; }
 
 .pages { text-align: center; }
 
-.goto-top { position: fixed; top: 80%; }
 
 .login { padding-top: 10%; }
+
+.main_logo { position:relative; top: -3px; }

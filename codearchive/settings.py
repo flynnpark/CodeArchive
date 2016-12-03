@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'el_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,3 +105,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
+
+EL_PAGINATION_PER_PAGE = 1
+EL_PAGINATION_PREVIOUS_LABEL = '&lang;'
+EL_PAGINATION_NEXT_LABEL = '&rang;'
+EL_PAGINATION_FIRST_LABEL = '&Lang;'
+EL_PAGINATION_LAST_LABEL = '&Rang;'
+
