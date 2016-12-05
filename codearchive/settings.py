@@ -25,7 +25,7 @@ SECRET_KEY = '=9a9vcwxvntdv0mt5(4dnk(!+kgxz=x70+*8b=-n^h^beb*rjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wphestiraid.pythonanywhere.com']
 
 
 # Application definition
@@ -106,7 +106,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
 
-EL_PAGINATION_PER_PAGE = 1
+EL_PAGINATION_PER_PAGE = 5
 EL_PAGINATION_PREVIOUS_LABEL = '&lang;'
 EL_PAGINATION_NEXT_LABEL = '&rang;'
 EL_PAGINATION_FIRST_LABEL = '&Lang;'

@@ -11,6 +11,11 @@
 			{{ post.text|truncatechars:200 }}
 		</div>
 		<hr>
+		{% empty %}
+			<div class="no-post text-center">
+				<h3>포스트가 없습니다.</h3>
+				<a href="" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left"></span> 이전으로 돌아가기</a>
+			</div>
 		{% endfor %}
 
 		<div class="pages">

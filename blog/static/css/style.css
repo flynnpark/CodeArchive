@@ -1,12 +1,14 @@
-body { padding-top: 70px; padding-bottom: 30px;}
+body { padding-top: 70px; }
+aside { position: fixed; }
 footer { position: relative; width: 100%; bottom: 0; }
 
 .blog-footer {
-  padding: 40px 0;
-  color: #999;
-  text-align: center;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5e5;
+	padding: 40px 0;
+	margin: 20px 0px 0px 0px;
+	color: #999;
+	text-align: center;
+	background-color: #f9f9f9;
+	border-top: 1px solid #e5e5e5;
 }
 
 .blog-footer p:last-child {
@@ -15,7 +17,8 @@ footer { position: relative; width: 100%; bottom: 0; }
 
 .pages { text-align: center; }
 
-
 .login { padding-top: 10%; }
 
-.main_logo { position:relative; top: -3px; }
+.main_logo { position: relative; top: -3px; }
+
+.no-post { position: relative; top: 100px;}

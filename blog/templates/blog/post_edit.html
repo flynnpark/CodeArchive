@@ -2,7 +2,36 @@
 
 {% block content %}
 	<h3>글 쓰기</h3>
-	<form method="POST" class="form-group">{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="btn btn_primary">저장</button>
+	<form method="POST" class="form-horizontal">{% csrf_token %}
+		<div class="form-group">
+			<label for="id_title" class="col-sm-2 control-label">제목</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="id_title" name="title" maxlength="200" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="id_category" class="col-sm-2 control-label">카테고리</label>
+			<div class="col-sm-10">
+				<select class="form-control" id="id_category" name="category">
+					<option value="자료구조">자료구조</option>
+					<option value="데이터베이스">데이터베이스</option>
+					<option value="웹개발">웹 개발</option>
+					<option value="cpp">C++</option>
+					<option value="php">php</option>
+					<option value="python">Python</option>
+					<option value="js">JavaScript</option>
+					<option value="etc">자료 보관함</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="id_text" class="col-sm-2 control-label">내용</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" id="id_text" name="text" rows="27"></textarea>
+			</div>
+		</div>
+		<div class="container-fluid text-center">
+			<button type="submit" class="btn btn_primary">저장</button>
+		</div>
+	</form>
 {% endblock %}
