@@ -19,7 +19,9 @@
 		</h3>
 	</div>
 	<div>
+		{% autoescape off %}
 		{{ post.text|linebreaksbr }}
+		{% endautoescape %}
 	</div>
 	<hr>
 {% endblock content %}

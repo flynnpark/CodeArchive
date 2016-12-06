@@ -6,28 +6,28 @@
 		<div class="form-group">
 			<label for="id_title" class="col-sm-2 control-label">제목</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="id_title" name="title" maxlength="200" required>
+				<input type="text" class="form-control" id="id_title" name="title" maxlength="200" value="{{ form.title.value|default_if_none:"" }}" required>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="id_category" class="col-sm-2 control-label">카테고리</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="id_category" name="category">
-					<option value="자료구조">자료구조</option>
-					<option value="데이터베이스">데이터베이스</option>
-					<option value="웹개발">웹 개발</option>
-					<option value="cpp">C++</option>
-					<option value="php">php</option>
-					<option value="python">Python</option>
-					<option value="js">JavaScript</option>
-					<option value="etc">자료 보관함</option>
+					<option value="자료구조" {% if form.category.value == '자료구조' %} selected {% endif %}>자료구조</option>
+					<option value="데이터베이스" {% if form.category.value == '데이터베이스' %} selected {% endif %}>데이터베이스</option>
+					<option value="웹개발" {% if form.category.value == '웹개발' %} selected {% endif %}>웹 개발</option>
+					<option value="cpp" {% if form.category.value == 'cpp' %} selected {% endif %}>C++</option>
+					<option value="php" {% if form.category.value == 'php' %} selected {% endif %}>php</option>
+					<option value="python" {% if form.category.value == 'python' %} selected {% endif %}>Python</option>
+					<option value="js" {% if form.category.value == 'js' %} selected {% endif %}>JavaScript</option>
+					<option value="etc" {% if form.category.value == 'etc' %} selected {% endif %}>자료 보관함</option>
 				</select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="id_text" class="col-sm-2 control-label">내용</label>
 			<div class="col-sm-10">
-				<textarea class="form-control" id="id_text" name="text" rows="27"></textarea>
+				<textarea class="form-control" id="id_text" name="text" rows="27">{{ form.text.value|default_if_none:"" }}</textarea>
 			</div>
 		</div>
 		<div class="container-fluid text-center">

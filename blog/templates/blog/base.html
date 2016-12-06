@@ -20,7 +20,7 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 	</head>
-	<body>
+	<body id="top">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
@@ -127,7 +127,7 @@
 						</div>
 						<hr>
 						<div class="goto-top text-info">
-							<a href="#" class="back-to-top">
+							<a href="#top" onclick="scrollToTop(); return false">
 								<span class="glyphicon glyphicon-arrow-up"></span>
 								상단으로 돌아가기
 							</a>
@@ -137,17 +137,31 @@
 			</div>
 		</div>
 		
-		<footer class="blog-footer">
+		<footer class="blog-footer" id="blog-footer">
 			Copyright(c) 2016 Code Archive. All rights reserved.
 		</footer>
 		<script type="text/javascript">
-			var amountScrolled = 300;
-			$('a.back-to-top').click(function() {
-				$('html, body').animate({
-					scrollTop: 0
-				}, 700);
-				return false;
-			});
+
+			var body = document.body,
+			    html = document.documentElement,
+			    screen_y = screen.height;
+
+			var height = Math.max( body.scrollHeight, body.offsetHeight, 
+			                       html.clientHeight, html.scrollHeight, html.offsetHeight ) + 120;
+
+			if (height < screen_y) {
+				var dom = document.getElementById("blog-footer");
+				dom.style.position = "absolute";
+			}
+
+			var timeOut;
+			function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+					window.scrollBy(0,-50);
+					timeOut=setTimeout('scrollToTop()', 2);
+				}
+				else clearTimeout(timeOut);
+			}
 		</script>
 		<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
