@@ -1,23 +1,42 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
+from django.db.models.functions import TruncMonth
 from .models import Post
 from .forms import PostForm
 
+
 def post_list(request) :
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	return render(request, 'blog/post_list.html', {'posts' : posts})
+	
+	
+	pagedata = {'posts' : posts, 'queryset' : queryset}
+
+	return render(request, 'blog/post_list.html', pagedata)
 
 def post_category(request, ct) :
 	posts = Post.objects.filter(category = ct).order_by('-published_date')
-	return render(request, 'blog/post_list.html', {'posts' : posts})
+	pagedata = {'posts' : posts, 'subtitle' : ct}
+
+	return render(request, 'blog/post_list.html', pagedata)
 
 def post_detail(request, pk) :
 	post = get_object_or_404(Post, pk=pk)
 	return render(request, 'blog/post_detail.html', {'post' : post})
 
+def month_view(request, year, month) :
+	posts = Post.objects.filter(published_date__year=year) 
+	posts = posts.filter(published_date__month=int(month))
+	pagedata = {'posts':posts, 'subtitle':''}
+	pagedata.update({'posts':posts, 'subtitle':"%s년 %s월의 " % (year, int(month)),})
+	return render(request, 'blog/post_list.html', pagedata)
+
+
+
 @login_required
+
 def post_new(request) :
 	if request.method == "POST" :
 		form = PostForm(request.POST)

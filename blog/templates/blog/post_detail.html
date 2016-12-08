@@ -8,7 +8,22 @@
 			</a>
 			{{ post.title }} 
 			{% if post.published_date %}
-			<small>{{ post.category }} | {{ post.published_date }} </small>
+			<small>
+				{% if post.category == "웹개발" %}
+					웹 개발
+				{% elif post.category == "cpp" %}
+					C++
+				{% elif post.category == "python" %}
+					Python
+				{% elif post.category == "js" %}
+					JavaScript
+				{% elif post.category == "etc" %}
+					자료 보관함
+				{% else %}
+					{{ post.category }}
+				{% endif %}
+				 | {{ post.published_date }} 
+			</small>
 			{% else %}
 			<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">출판</a>
 			{% endif %}

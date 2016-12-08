@@ -1,11 +1,46 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+	<h3>
+		{% if subtitle %}
+			{% if subtitle == "웹개발" %}
+				웹 개발
+			{% elif subtitle == "cpp" %}
+				C++
+			{% elif subtitle == "python" %}
+				Python
+			{% elif subtitle == "js" %}
+				JavaScript
+			{% elif subtitle == "etc" %}
+				자료 보관함
+			{% else %}
+				{{ subtitle }}
+			{% endif %}
+		{% endif %}
+		글 목록 
+	</h3>
 	{% load el_pagination_tags %}
 		{% paginate posts %} 
 		{% for post in posts %}
 		<div class="page-header">
-			<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> <small>{{ post.category }} | {{ post.published_date }}</small></h3>
+			<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> 
+			<small>
+				{% if post.category == "웹개발" %}
+					웹 개발
+				{% elif post.category == "cpp" %}
+					C++
+				{% elif post.category == "python" %}
+					Python
+				{% elif post.category == "js" %}
+					JavaScript
+				{% elif post.category == "etc" %}
+					자료 보관함
+				{% else %}
+					{{ post.category }}
+				{% endif %}
+				 | {{ post.published_date }} 
+			</small>
+			</h3>
 		</div>
 		<div>
 			{{ post.text|truncatechars:200 }}
@@ -47,3 +82,7 @@
 		</div>
 
 {% endblock content %}
+
+
+{% block month %}
+{% endblock month %}

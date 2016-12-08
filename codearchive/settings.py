@@ -25,7 +25,7 @@ SECRET_KEY = '=9a9vcwxvntdv0mt5(4dnk(!+kgxz=x70+*8b=-n^h^beb*rjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wphestiraid.pythonanywhere.com']
+ALLOWED_HOSTS = ['wphestiraid.pythonanywhere.com', '192.168.0.10']
 
 
 # Application definition
