@@ -148,13 +148,15 @@
 			    html = document.documentElement,
 			    screen_y = screen.height;
 
-			var height = Math.max( body.scrollHeight, body.offsetHeight, 
-			                       html.clientHeight, html.scrollHeight, html.offsetHeight ) + 120;
+			var height = Math.min( body.scrollHeight, body.offsetHeight, 
+			                       html.scrollHeight, html.offsetHeight ) + 120;
 
 			if (height < screen_y) {
 				var dom = document.getElementById("blog-footer");
 				dom.style.position = "absolute";
 			}
+
+			alert(height + " " + screen_y)
 
 			var timeOut;
 			function scrollToTop() {
