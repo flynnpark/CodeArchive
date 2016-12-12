@@ -3,16 +3,16 @@
 {% block content %}
 	<h3>
 		{% if subtitle %}
-			{% if subtitle == "웹개발" %}
-				웹 개발
-			{% elif subtitle == "cpp" %}
-				C++
-			{% elif subtitle == "python" %}
-				Python
-			{% elif subtitle == "js" %}
-				JavaScript
-			{% elif subtitle == "etc" %}
-				자료 보관함
+			{% if subtitle == "웹개발 글 목록" %}
+				웹 개발 글 목록
+			{% elif subtitle == "cpp 글 목록" %}
+				C++ 글 목록
+			{% elif subtitle == "python 글 목록" %}
+				Python 글 목록
+			{% elif subtitle == "js 글 목록" %}
+				JavaScript 글 목록
+			{% elif subtitle == "etc 글 목록" %}
+				자료 보관함 글 목록
 			{% else %}
 				{{ subtitle }}
 			{% endif %}
