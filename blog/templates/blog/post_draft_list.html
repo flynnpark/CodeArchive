@@ -1,13 +1,67 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-	{% for post in posts %}
-		<div class="page-header">
-			<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> <small>{{ post.category }} | {{ post.created_date|date:'d-m-Y' }}</small></h3>
+	<h3>출판 전인 글</h3>
+	{% load el_pagination_tags %}
+		{% paginate posts %} 
+		{% for post in posts %}
+			<div class="page-header">
+				<h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a> 
+					<small>
+						{% if post.category == "웹개발" %}
+							웹 개발
+						{% elif post.category == "cpp" %}
+							C++
+						{% elif post.category == "python" %}
+							Python
+						{% elif post.category == "js" %}
+							JavaScript
+						{% elif post.category == "etc" %}
+							자료 보관함
+						{% else %}
+							{{ post.category }}
+						{% endif %}
+					 	| {{ post.created_date|date:'d-m-Y' }}
+					</small>
+				</h3>
+			</div>
+			<div>
+				{{ post.text|truncatechars:200 }}
+			</div>
+			<hr>
+		{% empty %}
+			<div class="no-post text-center">
+				<h3>포스트가 없습니다.</h3>
+				<a href="" onclick="history.back()"><span class="glyphicon glyphicon-arrow-left"></span> 이전으로 돌아가기</a>
+			</div>
+		{% endfor %}
+		
+		<div class="pages">
+			<nav>
+				<ul class="pagination">
+				{% get_pages %}
+				{% if pages.paginated %}
+					<li>
+					{{ pages.first_as_arrow }}
+					</li>
+					<li>
+					{{ pages.previous }}
+					</li>
+					{% for page in pages %}
+					<li>
+					{{ page }}
+					</li>
+					{% endfor %}
+					<li>
+					{{ pages.next }}
+					</li>
+					<li>
+					{{ pages.last_as_arrow }}
+					</li>
+				{% endif %}
+
+				</ul>
+			</nav>
 		</div>
-		<div>
-			{{ post.text|truncatechars:200 }}
-		</div>
-		<hr>
-	{% endfor %}
+
 {% endblock %}
