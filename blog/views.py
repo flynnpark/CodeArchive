@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from django.db.models.functions import TruncMonth
+from django.contrib.postgres.search import SearchVector
 from .models import Post
 from .forms import PostForm
 
@@ -17,7 +17,7 @@ def post_list(request) :
 
 def post_category(request, ct) :
 	posts = Post.objects.filter(category = ct).order_by('-published_date')
-	pagedata = {'posts' : posts, 'subtitle' : ct}
+	pagedata = {'posts' : posts, 'subtitle' : ct + " 글 목록"}
 
 	return render(request, 'blog/post_list.html', pagedata)
 
@@ -29,7 +29,17 @@ def month_view(request, year, month) :
 	posts = Post.objects.filter(published_date__year=year) 
 	posts = posts.filter(published_date__month=int(month)).order_by('-published_date')
 	pagedata = {'posts':posts, 'subtitle':''}
-	pagedata.update({'posts':posts, 'subtitle':"%s년 %s월의 " % (year, int(month)),})
+	pagedata.update({'posts':posts, 'subtitle':"%s년 %s월의 글 목록" % (year, int(month)),})
+	return render(request, 'blog/post_list.html', pagedata)
+
+def search_post(request) :
+	keyword = request.GET['keyword']
+	posts1 = Post.objects.filter(title__contains=keyword).order_by('-published_date')
+	posts2 = Post.objects.filter(text__contains=keyword).order_by('-published_date')
+	posts = posts1|posts2
+	posts = posts.order_by('-published_date')
+	pagedata = {'posts':posts, 'subtitle' : '\"' + keyword + '" 검색 결과'}
+
 	return render(request, 'blog/post_list.html', pagedata)
 
 
