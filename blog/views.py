@@ -17,6 +17,7 @@ def post_list(request) :
 
 def post_category(request, ct) :
 	posts = Post.objects.filter(category = ct).order_by('-published_date')
+	posts = posts.filter(published_date__lte=timezone.now())
 	pagedata = {'posts' : posts, 'subtitle' : ct + " 글 목록"}
 
 	return render(request, 'blog/post_list.html', pagedata)
@@ -26,7 +27,8 @@ def post_detail(request, pk) :
 	return render(request, 'blog/post_detail.html', {'post' : post})
 
 def month_view(request, year, month) :
-	posts = Post.objects.filter(published_date__year=year) 
+	posts = Post.objects.filter(published_date__year=year)
+	posts = posts.filter(published_date__lte=timezone.now())
 	posts = posts.filter(published_date__month=int(month)).order_by('-published_date')
 	pagedata = {'posts':posts, 'subtitle':''}
 	pagedata.update({'posts':posts, 'subtitle':"%s년 %s월의 글 목록" % (year, int(month)),})
@@ -37,6 +39,7 @@ def search_post(request) :
 	posts1 = Post.objects.filter(title__contains=keyword).order_by('-published_date')
 	posts2 = Post.objects.filter(text__contains=keyword).order_by('-published_date')
 	posts = posts1|posts2
+	posts = posts.filter(published_date__lte=timezone.now())
 	posts = posts.order_by('-published_date')
 	pagedata = {'posts':posts, 'subtitle' : '\"' + keyword + '" 검색 결과'}
 
