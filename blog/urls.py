@@ -11,4 +11,5 @@ urlpatterns = [
 	url(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),
 	url(r'^category/(?P<ct>[a-zA-Z0-9\u3131-\u3163\uac00-\ud7a3]+)/$', views.post_category, name="post_category"),
 	url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]+)/$', views.month_view),
+	
 ]

@@ -25,7 +25,7 @@ SECRET_KEY = '=9a9vcwxvntdv0mt5(4dnk(!+kgxz=x70+*8b=-n^h^beb*rjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wphestiraid.pythonanywhere.com', '192.168.0.10']
+ALLOWED_HOSTS = ['wphestiraid.pythonanywhere.com', '192.168.0.10', 'hestiraid.iptime.org']
 
 
 # Application definition
@@ -37,8 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
     'el_pagination',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,4 +111,3 @@ EL_PAGINATION_PREVIOUS_LABEL = '&lang;'
 EL_PAGINATION_NEXT_LABEL = '&rang;'
 EL_PAGINATION_FIRST_LABEL = '&Lang;'
 EL_PAGINATION_LAST_LABEL = '&Rang;'
-

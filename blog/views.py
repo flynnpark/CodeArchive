@@ -27,11 +27,10 @@ def post_detail(request, pk) :
 
 def month_view(request, year, month) :
 	posts = Post.objects.filter(published_date__year=year) 
-	posts = posts.filter(published_date__month=int(month))
+	posts = posts.filter(published_date__month=int(month)).order_by('-published_date')
 	pagedata = {'posts':posts, 'subtitle':''}
 	pagedata.update({'posts':posts, 'subtitle':"%s년 %s월의 " % (year, int(month)),})
 	return render(request, 'blog/post_list.html', pagedata)
-
 
 
 @login_required

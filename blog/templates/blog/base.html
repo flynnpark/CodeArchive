@@ -102,11 +102,8 @@
 						<div class="submenu">
 							<h4>월별 모아보기</h4>
 							<ul>
-								<li>2016년 11월</li>
-								<li>2016년 10월</li>
-								<li>2016년 9월</li>
-								<li>2016년 8월</li>
-								<li>2016년 7월</li>
+								<li><a href="{% url 'post_list' %}2016/12/">2016년 12월</a></li>
+								<li><a href="{% url 'post_list' %}2016/11/">2016년 11월</a></li>
 								{% block month %}
 								{% endblock %}
 							</ul>
@@ -155,8 +152,6 @@
 				var dom = document.getElementById("blog-footer");
 				dom.style.position = "absolute";
 			}
-
-			alert(height + " " + screen_y)
 
 			var timeOut;
 			function scrollToTop() {
